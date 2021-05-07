@@ -140,7 +140,7 @@ calc_maggic_score<-Vectorize(
     acei_arb
     ){
 
-      ef_score=case_when(
+      ef_score=dplyr::case_when(
         lv_ef<20 ~ 7,
         between(floor(lv_ef), 20, 24) ~ 6,
         between(floor(lv_ef), 25, 29) ~ 5,
@@ -149,7 +149,7 @@ calc_maggic_score<-Vectorize(
         lv_ef>=40 ~ 0
         )
 
-      age_score=case_when(
+      age_score=dplyr::case_when(
         age<56 ~ 0,
         between(floor(age), 56,59) & lv_ef<30 ~ 1,
         between(floor(age), 56,59) & between(floor(lv_ef),30,39) ~ 2,
@@ -171,7 +171,7 @@ calc_maggic_score<-Vectorize(
         age>=80 & lv_ef>=40 ~ 15
         )
 
-      sysbp_score=case_when(
+      sysbp_score=dplyr::case_when(
         sys_bp<110 & lv_ef<30 ~ 5,
         sys_bp<110 & between(floor(lv_ef),30,39) ~ 3,
         sys_bp<110 & lv_ef>=40 ~ 2,
@@ -195,7 +195,7 @@ calc_maggic_score<-Vectorize(
         sys_bp>=150 ~ 0
         )
 
-      bmi_score=case_when(
+      bmi_score=dplyr::case_when(
         bmi<15 ~ 6,
         between(floor(bmi), 15, 19) ~ 5,
         between(floor(bmi), 20, 24) ~ 3,
@@ -203,7 +203,7 @@ calc_maggic_score<-Vectorize(
         bmi>=30 ~ 0
         )
 
-      creatinine_score=case_when(
+      creatinine_score=dplyr::case_when(
         creatinine<90 ~ 0,
         between(floor(creatinine),90,109) ~ 1,
         between(floor(creatinine),110,129) ~ 2,
@@ -214,7 +214,7 @@ calc_maggic_score<-Vectorize(
         creatinine>=250 ~ 8
         )
 
-      nyha_score=case_when(
+      nyha_score=dplyr::case_when(
         nyha=="I" ~ 0,
         nyha=="II" ~ 2,
         nyha=="III" ~ 6,
@@ -226,8 +226,8 @@ calc_maggic_score<-Vectorize(
       diabetes_score=diabetes *3 #factor 3
       copd_score=copd *2 #factor 2
       hf_18_score=hf_gt_18_months *2 #factor 2
-      not_beta_score=if_else(betablock==0, 3, 0)
-      not_ace_arb_score=if_else(acei_arb==0, 1, 0)
+      not_beta_score=dplyr::if_else(betablock==0, 3, 0)
+      not_ace_arb_score=dplyr::if_else(acei_arb==0, 1, 0)
 
   maggic_score <-
     ef_score+
@@ -255,12 +255,12 @@ calc_maggic_score<-Vectorize(
     return(single_points)
   }
   else if(target_param=="1_year_mort" & !is.na(maggic_score)){
-    x1_year_mort<-filter(maggic_mortality_lookup,
+    x1_year_mort<-dplyr::filter(maggic_mortality_lookup,
                          maggic_score==maggic_points)$X1_year_mortality
     return(x1_year_mort)
   }
   else if(target_param=="3_year_mort" & !is.na(maggic_score)){
-    x3_year_mort<-filter(maggic_mortality_lookup,
+    x3_year_mort<-dplyr::filter(maggic_mortality_lookup,
                          maggic_score==maggic_points)$X3_year_mortality
     return(x3_year_mort)
   }

@@ -284,7 +284,7 @@ calc_bcn_biohf_v2<-Vectorize(
 
       #Decide if value is in boundries or should be replaced
       #..if value is not provided, set it to the median (if available)
-      patient_parameter = case_when(is.na(patient_parameter) ~ median_impute,
+      patient_parameter = dplyr::case_when(is.na(patient_parameter) ~ median_impute,
                                     #..if value smaller than 1st percentile
                                     #..set to 1st percentile
                                     patient_parameter<lower_limit ~ lower_limit,
@@ -307,12 +307,12 @@ calc_bcn_biohf_v2<-Vectorize(
     hf_duration <- check_values(hf_duration, "hf_duration")
 
     #Convert parameters to fit into the formula
-    nyha = case_when(nyha=="I" ~ 0,
+    nyha = dplyr::case_when(nyha=="I" ~ 0,
                      nyha=="II" ~ 0,
                      nyha=="III" ~ 1,
                      nyha=="IV" ~ 1
     )
-    lv_ef = case_when(lv_ef>=45 ~ 1,
+    lv_ef = dplyr::case_when(lv_ef>=45 ~ 1,
                       lv_ef<45 ~ 0)
 
 
