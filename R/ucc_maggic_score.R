@@ -26,6 +26,7 @@
 #'
 #'
 #' @importFrom dplyr "%>%"
+#' @importFrom dplyr between
 #' @param target_param Desired outcome of the function (n year mortality or calculated points). Defaults to "1_year_mort". Possible settings are "1_year_mort", "3_year_mort", "points" (returning the points before mapping to a mortality score), "detail_point_info" returning the string of all single scoring calculations (age, lv_ef, ...) concatenated. Order is "age|lv_ef|gender|sys_bp|bmi|creatinine|nyha|smoking|diabetes|copd|hf_gt_18_months|betablock|acei_arb".
 #' @param age Health factor patient age in years.
 #' @param lv_ef Health factor LV EF, Percentage.
