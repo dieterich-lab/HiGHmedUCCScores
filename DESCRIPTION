@@ -1,0 +1,17 @@
+Package: HiGHmedUCCScores
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Aljoscha",
+           family = "Kindermann",
+           role = c("aut", "cre"),
+           email = "aljoscha.kindermann@med.uni-heidelberg.de")
+Description: This package provides different published scoring functions transcribed into R-functions to calculate mortality risks of heart failure patients.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to
+    pick a license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports:
+    dplyr

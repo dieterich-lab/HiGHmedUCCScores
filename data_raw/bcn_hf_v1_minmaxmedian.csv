@@ -1,0 +1,9 @@
+,lower_limit,upper_limit,median_impute
+age,35,88,
+lv_ef,10,71,34
+sodium,130,147,139
+egfr,6,110,42.4
+hb,8.7,17.1,12.9
+ntprobnp,21,34800,1361.5
+hstnt,3,265,22.6
+st2,18,157,38.1
